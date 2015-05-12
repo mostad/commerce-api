@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var Exception                       $exception
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ */
+$this->layout('layout/error');
+$this->headTitle('500');
+?>
+<h1>500: <?= $this->get('message'); ?></h1>
+
+<?php if ($this->get('display_exceptions')): ?>
+    <?php if ($this->get('exception') && $this->get('exception') instanceof Exception): ?>
+        <h2>Additional information</h2>
+        <h3><?= get_class($this->get('exception')); ?></h3>
+        <dl>
+            <dt>File:</dt>
+            <dd><pre><?= $this->get('exception')->getFile(); ?>:<?= $this->get('exception')->getLine(); ?></pre></dd>
+            <dt>Message:</dt>
+            <dd><pre><?= $this->get('exception')->getMessage(); ?></pre></dd>
+            <dt>Stack trace:</dt>
+            <dd><pre><?= $this->get('exception')->getTraceAsString(); ?></pre></dd>
+        </dl>
+        <?php if ($this->get('exception')->getPrevious()): ?>
+            <h2>Previous exceptions:</h2>
+            <?php $exception = $this->get('exception')->getPrevious(); ?>
+            <?php while ($exception->getPrevious()): ?>
+                <h3><?= get_class($exception); ?></h3>
+                <dl>
+                    <dt>File:</dt>
+                    <dd><pre><?= $exception->getFile(); ?>:<?= $exception->getLine(); ?></pre></dd>
+                    <dt>Message:</dt>
+                    <dd><pre><?= $exception->getMessage(); ?></pre></dd>
+                    <dt>Stack trace:</dt>
+                    <dd><pre><?= $exception->getTraceAsString(); ?></pre></dd>
+                </dl>
+                <?php $exception = $exception->getPrevious(); ?>
+            <?php endwhile; ?>
+        <?php endif; ?>
+    <?php else: ?>
+        <h3>No Exception available</h3>
+    <?php endif; ?>
+<?php endif; ?>

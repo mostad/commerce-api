@@ -1,0 +1,21 @@
+<?php
+return [
+    'view_manager' => [
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+    ],
+
+    'zenddevelopertools' => [
+        'profiler' => [
+            'collectors' => [
+                'db' => null,
+            ],
+        ],
+        'events' => [
+            'enabled' => true,
+        ],
+        'toolbar' => [
+            'enabled' => true,
+        ]
+    ],
+];

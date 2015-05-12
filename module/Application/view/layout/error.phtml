@@ -1,0 +1,14 @@
+<?php /** @var $this \Zend\View\Renderer\PhpRenderer */ ?>
+<?= $this->doctype(); ?>
+<html lang="en">
+<head>
+    <?= $this->headTitle('Error')->setSeparator(' - '); ?>
+    <?= $this->headMeta()->setCharset('utf-8'); ?>
+    <?= $this->headLink(); ?>
+    <?= $this->headScript(); ?>
+</head>
+<body>
+<?= $this->get('content'); ?>
+<?= $this->inlineScript(); ?>
+</body>
+</html>

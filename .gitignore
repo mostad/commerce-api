@@ -1,7 +1,6 @@
 .idea/
 .vagrant/
 config/autoload/*.local.php
-html/
 puphpet/
 vendor/
 Vagrantfile
